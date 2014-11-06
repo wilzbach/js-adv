@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>JS Intro</title>
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.min.css">
+	<!--<link rel="stylesheet" href="reveal.js/css/print/pdf.min.css"> -->
+
+	<link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="external/zenburn.css">
+
+    <link rel="stylesheet" href="external/little-console.css" id="theme">
+	<link rel="stylesheet" href="custom.css" id="theme">
+	<link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+
+</head>
+
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+<section>
+<span data-markdown>
+<script type="text/template">
+# Intro to JavaScript
+
+## Part 2
+
+</script>
+</span>
+<span id="antimail"></span>
+<a id="forkme" href="https://github.com/greenify/js-intro"><img style="position: absolute; top: 0; right: 0; border: 0;" src="img/forkme.png" alt="Fork me on GitHub" data-canonical-src="img/forkme.png"></a>
+
+<script type="text/javascript">
+// simple spam blocker
+function antimail(name,domain,tld,subject){
+	var a = document.createElement("a");
+	var mail = name + "@" + domain + "." + tld;
+	a.href = "mailto:" + mail;
+	a.textContent = mail;
+	return a;
+}
+document.getElementById("antimail").appendChild(antimail("seb","wilzba", "ch"));
+// make fork me absolute
+document.body.appendChild(document.getElementById("forkme"));
+</script>
+</section>
+
+<section data-markdown ><script type="text/template">
+##  Functional JS
+
+➙ [Map/reduce demo](https://greenify.github.io/algo-vis/)
+</script></section>
+
+<section>
+<h2>Functional JS<h2>
+<a class="jsbin-embed" href="https://jsbin.com/venobi/1/embed?js,console&height=600px">JS Bin</a>
+</section>
+
+<section>
+<h2>Events<h2>
+<a class="jsbin-embed" href="https://jsbin.com/pipewi/4/embed?js,console&height=600px">JS Bin</a>
+</section>
+
+<section>
+<h2>Models<h2>
+<a class="jsbin-embed" href="https://jsbin.com/gugine/1/embed?js,console&height=600px">JS Bin</a>
+</section>
+
+<section>
+<h2>Collections<h2>
+<a class="jsbin-embed" href="https://jsbin.com/wafene/2/embed?js,console&height=600px">JS Bin</a>
+</section>
+
+<section>
+<h2>Views<h2>
+<a class="jsbin-embed" href="https://jsbin.com/mehepu/4/embed?js,console&height=600px">JS Bin</a>
+</section>
+
+<section>
+<h2>Promises<h2>
+<a class="jsbin-embed" href="https://jsbin.com/kasewu/3/embed?js,console&height=600px">JS Bin</a>
+</section>
+
+<!-------- chapter: performance ----------------->
+
+<section data-markdown data-state="rev-bg-pink"><script type="text/template">
+#  Performance
+</script></section>
+
+<section data-markdown><script type="text/template">
+## DOM reflows
+  
+happens when
+  
+* When you __add__ or __remove__ a DOM node.
+* When you __apply a style__ dynamically (e.g. `element.style.width="10px"`)
+* When you __retrieve a measurement__ that must be calculated (e.g. `offsetWidth`, `clientHeight`)  
+
+<br>
+➙ __avoid__ reflows (expensive operations!)
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Performance tricks
+  
+* use __`DocumentFragemts`__
+* __out-of-the-flow__ [DOM manipulation](https://developers.google.com/speed/articles/javascript-dom)  
+* don't define functions in loops
+* avoid memory leaks
+* test bottlenecks on e.g. [jsperf.com](http://jsperf.com)
+* [Chrome's profiling tools](https://developers.google.com/chrome-developer-tools/docs/profiles) are awesome
+  
+<br>
+[more][js-perf]
+
+[js-perf]: http://www.smashingmagazine.com/2012/11/05/writing-fast-memory-efficient-javascript/
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+## Links
+
+* [JS Garden](https://bonsaiden.github.io/JavaScript-Garden/)
+* [Google style guide](https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
+
+</script></section>
+
+</div>
+</div>
+
+<script src=external/little-console.js></script>
+<script>
+  // little console from @timruffles
+  function showConsoles() {
+
+    // show all consoles, and register 'cheats'
+    var cheats = [];
+
+    ;[].forEach.call(document.querySelectorAll(".little-console"),function(el) {
+      var cmds = new LittleConsole.Commands;
+      var console = new LittleConsole({el: el,commands: cmds});
+      var slide = el.parentElement;
+      var cheat = slide.querySelector("[type=cheat]");
+      if(!cheat) return;
+      cheats.push({
+        console: console,
+        slide: slide,
+        src: cheat.innerHTML,
+      });
+    });
+
+    // listen for 'cheat code' - ALT + C, and fill input
+    var C = 67;
+    document.body.addEventListener("keyup",function(evt) {
+      if(evt.keyCode !== C || !evt.altKey) return;
+      var slide = Reveal.getCurrentSlide();
+      cheats.forEach(function(setup) {
+        if(setup.slide !== slide) return;
+        setup.console.setCommand(setup.src);
+      });
+
+    });
+
+  }
+</script>
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.min.js"></script>
+<script>
+  Reveal.initialize({
+
+    // Display controls in the bottom right corner
+    controls: false,
+
+    // Display a presentation progress bar
+    progress: true,
+
+    // Push each slide change to the browser history
+    history: true,
+
+    // Enable keyboard shortcuts for navigation
+    keyboard: true,
+
+    // Enable the slide overview mode
+    overview: true,
+
+    // Vertical centering of slides
+    center: false,
+
+    // Loop the presentation
+    loop: false,
+
+    // Change the presentation direction to be RTL
+    rtl: false,
+
+    // Number of milliseconds between automatically proceeding to the
+    // next slide, disabled when set to 0, this value can be overwritten
+    // by using a data-autoslide attribute on your slides
+    autoSlide: 0,
+
+    // Enable slide navigation via mouse wheel
+    mouseWheel: false,
+
+    // Apply a 3D roll to links on hover
+    rollingLinks: false,
+
+    // Transition style
+    transition: 'fade', // default/cube/page/concave/zoom/linear/fade/none
+
+    dependencies: [
+        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+        { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+        // Interreveal.js/pret Markdown in <section> elements
+        { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'reveal.js/plugin/markdown/markdown.js', 
+          condition: function() { return !!document.querySelector( '[data-markdown]' ); },
+          callback: function() {
+            showConsoles();
+          } },
+
+        // Syntareveal.js/x highlight for <code> elements
+        { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+        // Zoom reveal.js/in and out with Alt+click
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Speakreveal.js/er notes
+        //{ src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Remotreveal.js/e control your reveal.js presentation using a touch device
+        // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+    ]
+
+  });
+</script>
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+  var link = document.createElement( 'link' );
+  link.rel = 'stylesheet'; //link.type = 'text/css'; link.media = 'print';
+  link.href = 'reveal.js/css/print/pdf.css';
+  document.getElementsByTagName( 'head' )[0].appendChild( link );
+  document.body.style.background = "white";
+}
+</script>
+<script src="https://drt35l4oshkgr.cloudfront.net/js/embed.js"></script>
+<script src="external/underscore.js"></script>
+</body>

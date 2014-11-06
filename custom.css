@@ -1,0 +1,45 @@
+.code-alongside-wrap {
+  overflow: auto;
+}
+.code-alongside-wrap div, .code-alongside-wrap code {
+  float: left;
+  width: 50%;
+  font-size: 1.75rem;
+}
+.code-alongside-wrap code {
+  text-align: left;
+  white-space: pre-wrap;
+}
+
+.reveal section img {
+    border: 0;
+}
+
+.reveal .no-shadow {
+    box-shadow: none;
+}
+
+.reveal .vert-align {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.rev-bg-red .reveal .state-background {
+    background: rgba( 255, 165, 0, 1 );
+}
+
+.rev-bg-red.reveal section h1 {
+    color: white;
+}
+
+.rev-bg-green .reveal .state-background {
+    background: rgba( 0, 255, 23, 1 );
+}
+
+.rev-bg-pink .reveal .state-background {
+    background: rgba(234, 108, 228, 1);
+}
+
+.little-console-large code {
+    height: 14em;
+}
